@@ -6,22 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/date_indicator"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/date_indicator_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Current_Date"
-        android:textSize="18sp" />
+        app:cardBackgroundColor="@color/green"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/date_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Current_Date"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/date_indicator"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_below="@+id/date_indicator_card"
         android:clipToPadding="false"
-        android:padding="10dp"
+        android:padding="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/customer_item" />
 
 </RelativeLayout>

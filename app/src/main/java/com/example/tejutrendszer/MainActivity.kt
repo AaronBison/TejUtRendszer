@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Hide top action bar
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        supportActionBar?.hide()
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN;
+//        supportActionBar?.hide()
 
         // Bottom navigation setup
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
