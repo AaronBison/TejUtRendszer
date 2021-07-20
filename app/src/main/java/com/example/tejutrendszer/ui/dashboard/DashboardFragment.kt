@@ -12,7 +12,6 @@ import com.example.tejutrendszer.R
 import com.example.tejutrendszer.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
-
     private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentDashboardBinding? = null
 
@@ -31,7 +30,7 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        val textView: TextView = binding.dateIndicator
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
