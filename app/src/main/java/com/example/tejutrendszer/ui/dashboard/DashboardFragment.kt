@@ -12,16 +12,17 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tejutrendszer.R
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import java.io.*
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class DashboardFragment : Fragment() {
 
     private var customerList : List<CustomerItem> = listOf()
-    private val sdf = SimpleDateFormat("yyyy MMMM dd (EEEE)")
+    private val generalDateFormat = SimpleDateFormat("yyyy MMMM dd (EEEE)")
+    private val todayDateFormat = SimpleDateFormat("dd")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,15 +30,14 @@ class DashboardFragment : Fragment() {
     ): View? {
 
         //generates dummy data for CustomerItem list
-        customerList = generateDummyList(500)
+        customerList = readCustomersFromCSV()
 
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        date_indicator.text = sdf.format(Date()).toString()
-
+        date_indicator.text = generalDateFormat.format(Date()).toString()
 
         recycler_view.hasFixedSize()
         recycler_view.layoutManager = LinearLayoutManager(context)
@@ -45,6 +45,44 @@ class DashboardFragment : Fragment() {
         recycler_view.adapter = CustomerItemAdapter(customerList)
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun readCustomersFromCSV(): List<CustomerItem>{
+        val listOfCustomers: MutableList<CustomerItem> = mutableListOf()
+
+        // Open input file
+        val inputStream = resources.openRawResource(R.raw.test)
+        val reader = BufferedReader(inputStream.bufferedReader())
+        val iterator = reader.lineSequence().iterator()
+
+        while (iterator.hasNext()){
+            val currentLine = iterator.next()
+
+            // Split by ","
+            val tokens = currentLine.split("*").toTypedArray()
+
+            val today = todayDateFormat.format(Date()).toInt()
+
+            Log.w("TAG",today.toString())
+            Log.w("TAG",tokens[today])
+
+            if(tokens[today] != ""){
+                val customerName = tokens[0]
+                val customerLiter = tokens[today]
+                val customerLiterThisMonth = tokens[tokens.size-2]
+                val customerDept = tokens[tokens.size-1]
+
+
+                val customer = CustomerItem(customerName,customerDept,customerLiter)
+                listOfCustomers.add(customer)
+            }
+        }
+
+
+        Log.w("TAG", listOfCustomers.toString())
+        reader.close()
+
+        return listOfCustomers
     }
 
     private fun generateDummyList(size: Int): List<CustomerItem> {

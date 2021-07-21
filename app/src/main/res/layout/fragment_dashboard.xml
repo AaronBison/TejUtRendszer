@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.dashboard.DashboardFragment"
+    android:paddingBottom="?attr/actionBarSize">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/date_indicator_card"
@@ -20,7 +21,8 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="Current_Date"
-            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:textStyle="italic" />
     </androidx.cardview.widget.CardView>
 

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="Customer_Name"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="22sp"/>
 
         <TextView
             android:id="@+id/customer_debt"
