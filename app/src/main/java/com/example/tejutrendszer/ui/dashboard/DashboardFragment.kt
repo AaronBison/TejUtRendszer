@@ -63,8 +63,8 @@ class DashboardFragment : Fragment() {
 
             val today = todayDateFormat.format(Date()).toInt()
 
-            Log.w("TAG",today.toString())
-            Log.w("TAG",tokens[today])
+            Log.w("today.toString()",today.toString())
+            Log.w("tokens[today]",tokens[today])
 
             if(tokens[today] != ""){
                 val customerName = tokens[0]
@@ -74,6 +74,7 @@ class DashboardFragment : Fragment() {
 
 
                 val customer = CustomerItem(customerName,customerDept,customerLiter)
+                Log.e("WTF","WTF")
                 listOfCustomers.add(customer)
             }
         }
