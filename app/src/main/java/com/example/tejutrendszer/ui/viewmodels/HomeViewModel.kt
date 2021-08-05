@@ -1,13 +1,13 @@
-package com.example.tejutrendszer.ui.notifications
+package com.example.tejutrendszer.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Még ide is kitalálunk valamit"
+        value = "99"
     }
     val text: LiveData<String> = _text
 }

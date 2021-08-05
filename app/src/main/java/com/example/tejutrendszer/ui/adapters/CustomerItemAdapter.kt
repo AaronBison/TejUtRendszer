@@ -1,4 +1,4 @@
-package com.example.tejutrendszer.ui.dashboard
+package com.example.tejutrendszer.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tejutrendszer.R
+import com.example.tejutrendszer.ui.models.CustomerItem
 import kotlinx.android.synthetic.main.customer_item.view.*
 
 class CustomerItemAdapter(private val customerItemList: List<CustomerItem>) : RecyclerView.Adapter<CustomerItemAdapter.CustomerItemViewHolder>() {

@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tejutrendszer.R
+import com.example.tejutrendszer.ui.adapters.CustomerItemAdapter
+import com.example.tejutrendszer.ui.models.CustomerItem
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import java.io.*
 import java.text.SimpleDateFormat
@@ -37,10 +40,14 @@ class DashboardFragment : Fragment() {
 
         date_indicator.text = generalDateFormat.format(Date()).toString()
 
-        recycler_view.hasFixedSize()
-        recycler_view.layoutManager = LinearLayoutManager(context)
-        recycler_view.itemAnimator = DefaultItemAnimator()
-        recycler_view.adapter = CustomerItemAdapter(customerList)
+        if(customerList.isNotEmpty()){
+            recycler_view.hasFixedSize()
+            recycler_view.layoutManager = LinearLayoutManager(context)
+            recycler_view.itemAnimator = DefaultItemAnimator()
+            recycler_view.adapter = CustomerItemAdapter(customerList)
+        }else{
+            text_empty_rv.isVisible = true
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }

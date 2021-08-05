@@ -1,13 +1,13 @@
-package com.example.tejutrendszer.ui.home
+package com.example.tejutrendszer.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class DashboardViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "99"
+        value = "This is dashboard Fragment"
     }
     val text: LiveData<String> = _text
 }
