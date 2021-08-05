@@ -1,12 +1,10 @@
 package com.example.tejutrendszer.ui.dashboard
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,7 +49,7 @@ class DashboardFragment : Fragment() {
         val listOfCustomers: MutableList<CustomerItem> = mutableListOf()
 
         // Open input file
-        val inputStream = resources.openRawResource(R.raw.test)
+        val inputStream = resources.openRawResource(R.raw.customers)
         val reader = BufferedReader(inputStream.bufferedReader())
         val iterator = reader.lineSequence().iterator()
 
@@ -74,7 +72,7 @@ class DashboardFragment : Fragment() {
 
 
                 val customer = CustomerItem(customerName,customerDept,customerLiter)
-                Log.e("WTF","WTF")
+                Log.e("WTF",listOfCustomers.toString())
                 listOfCustomers.add(customer)
             }
         }
