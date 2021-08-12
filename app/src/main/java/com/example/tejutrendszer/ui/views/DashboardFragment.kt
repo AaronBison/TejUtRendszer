@@ -1,4 +1,4 @@
-package com.example.tejutrendszer.ui.dashboard
+package com.example.tejutrendszer.ui.views
 
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tejutrendszer.R
-import com.example.tejutrendszer.ui.adapters.CustomerItemAdapter
-import com.example.tejutrendszer.ui.models.CustomerItem
+import com.example.tejutrendszer.adapters.CustomerItemAdapter
+import com.example.tejutrendszer.data.Customer
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import java.io.*
 import java.text.SimpleDateFormat
@@ -21,7 +21,7 @@ import kotlin.collections.ArrayList
 
 class DashboardFragment : Fragment() {
 
-    private var customerList : List<CustomerItem> = listOf()
+    private var customerList : List<Customer> = listOf()
     private val generalDateFormat = SimpleDateFormat("yyyy MMMM dd (EEEE)")
     private val todayDateFormat = SimpleDateFormat("dd")
 
@@ -30,7 +30,6 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //generates dummy data for CustomerItem list
         customerList = readCustomersFromCSV()
 
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
@@ -41,10 +40,10 @@ class DashboardFragment : Fragment() {
         date_indicator.text = generalDateFormat.format(Date()).toString()
 
         if(customerList.isNotEmpty()){
-            recycler_view.hasFixedSize()
-            recycler_view.layoutManager = LinearLayoutManager(context)
-            recycler_view.itemAnimator = DefaultItemAnimator()
-            recycler_view.adapter = CustomerItemAdapter(customerList)
+            recycler_view_dashboard.hasFixedSize()
+            recycler_view_dashboard.layoutManager = LinearLayoutManager(context)
+            recycler_view_dashboard.itemAnimator = DefaultItemAnimator()
+            recycler_view_dashboard.adapter = CustomerItemAdapter(customerList)
         }else{
             text_empty_rv.isVisible = true
         }
@@ -52,8 +51,8 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun readCustomersFromCSV(): List<CustomerItem>{
-        val listOfCustomers: MutableList<CustomerItem> = mutableListOf()
+    private fun readCustomersFromCSV(): List<Customer>{
+        val listOfCustomers: MutableList<Customer> = mutableListOf()
 
         // Open input file
         val inputStream = resources.openRawResource(R.raw.customers)
@@ -78,7 +77,7 @@ class DashboardFragment : Fragment() {
                 val customerDept = tokens[tokens.size-1]
 
 
-                val customer = CustomerItem(customerName,customerDept,customerLiter)
+                val customer = Customer(customerName,customerDept,customerLiter)
                 Log.e("WTF",listOfCustomers.toString())
                 listOfCustomers.add(customer)
             }
@@ -91,11 +90,11 @@ class DashboardFragment : Fragment() {
         return listOfCustomers
     }
 
-    private fun generateDummyList(size: Int): List<CustomerItem> {
-        val list = ArrayList<CustomerItem>()
+    private fun generateDummyList(size: Int): List<Customer> {
+        val list = ArrayList<Customer>()
 
         for (i in 1 until size){
-            val item = CustomerItem("Name $i", "130 lej", "2 l")
+            val item = Customer("Name $i", "130 lej", "2 l")
             list += item
         }
         return list

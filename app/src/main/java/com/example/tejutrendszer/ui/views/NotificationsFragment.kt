@@ -1,4 +1,4 @@
-package com.example.tejutrendszer.ui.notifications
+package com.example.tejutrendszer.ui.views
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:paddingBottom="?attr/actionBarSize"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.views.DashboardFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/date_indicator_card"
@@ -51,7 +51,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_dashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/date_indicator_card"

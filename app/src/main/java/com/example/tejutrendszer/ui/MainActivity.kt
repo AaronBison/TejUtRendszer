@@ -1,4 +1,4 @@
-package com.example.tejutrendszer
+package com.example.tejutrendszer.ui
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.tejutrendszer.R
 
 class MainActivity : AppCompatActivity() {
 
